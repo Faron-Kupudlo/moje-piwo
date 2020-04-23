@@ -1,8 +1,18 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
+
+
 
 class wpis(models.Model):
-    nazwa_piwa = models.CharField(max_length=50)
-    surowce = models.TextField(max_length=500)
+    nazwa_piwa = models.CharField(default='' , max_length=50)
+    surowiec_1 = models.CharField(default='',max_length=50)
+    surowiec_1_ilosc = models.FloatField('ilość', default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
+    class jednostka (models.TextChoices):
+        l = 'l', ('litr')
+        g = 'g', ('gram')
+        kg = 'kg', ('kilogram')
+
+    surowiec_1_jednostka = models.CharField('jednostka', max_length=10, choices=jednostka.choices, default=jednostka.l)
     drożdże = models.CharField(max_length=100)
 
     class fermentacja (models.TextChoices):
@@ -11,10 +21,8 @@ class wpis(models.Model):
 
     fermentacja =models.CharField(max_length=30, choices=fermentacja.choices, default=fermentacja.rd)
 
-    objetosc = models.IntegerField("objętość brzeczki w fermentatorze [litry]", max_length=2, default='20')
-    temperatura_D_D = models.IntegerField("temperatura dodania drożdży [°C]", max_length=3, default='19')
-    startowa_wartość_BLG = models.FloatField(max_length=5, null=True, blank=True, default='0')
-    końcowa_wartość_BLG = models.FloatField(max_length=5, null=True, blank=True, default='0')
+    objetosc = models.FloatField('objętość w fermentatorze', default=20, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
+    temperatura_D_D = models.FloatField('temperatura dodania drożdży', default=19, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
+    startowa_wartość_BLG = models.FloatField(default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
+    końcowa_wartość_BLG = models.FloatField(default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
     # przebieg fermentacji burzliwej
-
-
