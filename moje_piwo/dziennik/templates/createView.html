@@ -1,10 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    dodawanie ogłoszenia
-</body>
-</html>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body%}
+
+<form method="POST">
+  {% csrf_token %}
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <h6 class="form-group">
+            {{ form.nazwa_piwa|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            Surowce
+          </h6>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Ilość</th>
+                    <th scope="col">Jednostka</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{{ form.surowiec_1|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_1_ilosc|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_1_jednostka|as_crispy_field }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>{{ form.surowiec_2|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_2_ilosc|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_2_jednostka|as_crispy_field }}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>{{ form.surowiec_3|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_3_ilosc|as_crispy_field }}</td>
+                    <td>{{ form.surowiec_3_jednostka|as_crispy_field }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+          <h6 class="form-group">
+            {{ form.fermentacja|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            {{ form.drożdże|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            {{ form.objetosc|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            {{ form.temperatura_D_D|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            {{ form.startowa_wartość_BLG|as_crispy_field }}
+          </h6>
+          <h6 class="form-group">
+            {{ form.końcowa_wartość_BLG|as_crispy_field }}
+          </h6>
+          <button type="submit" class="btn btn-primary">Dodaj wpis</button>
+        </form>
+      </div>
+    </div>
+
+</form>
+
+{% endblock %}

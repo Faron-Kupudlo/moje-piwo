@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -6,17 +8,17 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" href="{% static 'dziennik/main.css' %}">
     <script src="https://kit.fontawesome.com/02d7796f10.js" crossorigin="anonymous"></script>
 
     <title>Moje-Piwo</title>
 </head>
 <body>
 <nav class="nav">
-  <a class="nav-link" href="#">Dziennik Piwa <i class="fas fa-beer"></i></a>
+  <a class="nav-link" href="{% url 'index' %}">Dziennik Piwa <i class="fas fa-beer"></i></a>
   <a class="nav-link" href="#">Przepisy na piwo</a>
   <a class="nav-link" href="#">Moje wpisy</a>
-  <a class="nav-link" href="#">Dodaj wpis</a>
+  <a class="nav-link" href="{% url 'wpis-nowy' %}">Dodaj wpis</a>
 
 </nav>
 
