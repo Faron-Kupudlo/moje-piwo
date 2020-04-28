@@ -18,7 +18,7 @@ class wpisCreateView(LoginRequiredMixin, CreateView):
               'drożdże','fermentacja',
               'objetosc','temperatura_D_D','startowa_wartość_BLG',
               'końcowa_wartość_BLG']
-    template_name = 'createView.html'
+    template_name = 'dziennik/createView.html'
 
     def form_valid(self, form):                                 #sprawdza zalogowanie, jeśli wylogowany to przekierowuje na stronę zalogowania
         form.instance.autor = self.request.user
@@ -26,4 +26,4 @@ class wpisCreateView(LoginRequiredMixin, CreateView):
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'dziennik/index.html')
