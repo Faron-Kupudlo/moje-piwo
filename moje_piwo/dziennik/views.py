@@ -20,6 +20,9 @@ class wpisCreateView(LoginRequiredMixin, CreateView):
               'końcowa_wartość_BLG']
     template_name = 'createView.html'
 
+    def form_valid(self, form):                                 #sprawdza zalogowanie, jeśli wylogowany to przekierowuje na stronę zalogowania
+        form.instance.autor = self.request.user
+        return super().form_valid(form)
 
 
 def index(request):
