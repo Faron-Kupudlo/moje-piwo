@@ -11,7 +11,7 @@ from .models import wpis
 
 class wpisCreateView(LoginRequiredMixin, CreateView):
     model = wpis
-    fields = ['nazwa_piwa',
+    fields = ['autor', 'data_dodania','nazwa_piwa',
               'surowiec_1', 'surowiec_1_ilosc', 'surowiec_1_jednostka',
               'surowiec_2', 'surowiec_2_ilosc', 'surowiec_2_jednostka',
               'surowiec_3', 'surowiec_3_ilosc', 'surowiec_3_jednostka',

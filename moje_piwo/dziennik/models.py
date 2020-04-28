@@ -1,8 +1,12 @@
 from django.db import models
 from django.urls import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth.models import User
+
 
 class wpis(models.Model):
+    autor = models.ForeignKey(User, on_delete=models.CASCADE)
+    data_dodania = models.DateTimeField(auto_now=True)
     nazwa_piwa = models.CharField(default='' , max_length=50)
     surowiec_1 = models.CharField('', default='',max_length=50, blank=True)
     surowiec_1_ilosc = models.FloatField('', default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)], blank=True)
@@ -34,6 +38,8 @@ class wpis(models.Model):
     temperatura_D_D = models.FloatField('temperatura dodania drożdży', default=19, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
     startowa_wartość_BLG = models.FloatField(default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
     końcowa_wartość_BLG = models.FloatField(default=0, validators=[MaxValueValidator(1000000), MinValueValidator(0)])
+
+
 
     def __str__(self):
         return self.nazwa_piwa

@@ -46,7 +46,18 @@ ul {
         margin: 0 auto;
         float: none;
         margin-bottom: 10px;
+}
 
+.mycard {
+        margin: 0 auto;
+        float: none;
+        margin-bottom: 10px;
+}
+
+.mycard2 {
+        margin: 0;
+        float: none;
+        margin-bottom: 10px;
 }
 
 .article-title {
